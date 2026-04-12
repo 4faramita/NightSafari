@@ -1,4 +1,4 @@
-# Safari Private
+# NightSafari
 
 > Open the given URL in a private Safari window
 
@@ -22,7 +22,7 @@ The use-case is being able to open a URL in a private Safari window from a brows
 
 Open a URL with the app like you would with normal Safari.
 
-For example, enable the “Safari Private” browser in the Velja settings and then select it in the browser prompt when clicking a link.
+For example, enable the “NightSafari” browser in the Velja settings and then select it in the browser prompt when clicking a link.
 
 ## Related
 

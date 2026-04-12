@@ -15,7 +15,7 @@
 
 /* Begin PBXFileReference section */
 		E37829052EA773CB007817A0 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
-		E3F868D128B115BB00CD969D /* Safari Private.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Safari Private.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3F868D128B115BB00CD969D /* NightSafari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NightSafari.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3F868D428B115BB00CD969D /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E3F868D828B115BC00CD969D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3F868E328B1162200CD969D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Safari Private/Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -42,7 +42,7 @@
 		E3F868D228B115BB00CD969D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E3F868D128B115BB00CD969D /* Safari Private.app */,
+				E3F868D128B115BB00CD969D /* NightSafari.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,7 +74,7 @@
 			);
 			name = "Safari Private";
 			productName = "Safari Private";
-			productReference = E3F868D128B115BB00CD969D /* Safari Private.app */;
+			productReference = E3F868D128B115BB00CD969D /* NightSafari.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -285,7 +285,7 @@
 				);
 				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sindresorhus.Safari-Private";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = NightSafari;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
 				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
@@ -328,7 +328,7 @@
 				);
 				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sindresorhus.Safari-Private";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = NightSafari;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
 				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
