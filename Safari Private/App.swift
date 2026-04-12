@@ -9,16 +9,23 @@ struct AppMain: App {
 	}
 }
 
+private enum AppTiming {
+	static let quitDelay: Duration = .seconds(10)
+}
+
 private final class AppDelegate: NSObject, NSApplicationDelegate {
 	private var quitTask: Task<Void, Never>?
 
 	func applicationDidFinishLaunching(_ notification: Notification) {
-		_ = Permissions.Accessibility.requestAccess()
+		if !Permissions.Accessibility.hasAccess {
+			_ = Permissions.Accessibility.requestAccess()
+		}
+
 		scheduleQuit()
 	}
 
 	func application(_ application: NSApplication, open urls: [URL]) {
-		guard Permissions.Accessibility.requestAccess() else {
+		guard Permissions.Accessibility.hasAccess || Permissions.Accessibility.requestAccess() else {
 			let alert = NSAlert()
 			alert.messageText = "You need to allow Accessibility and Automation access in “System Settings › Privacy & Security”."
 			alert.runModal()
@@ -38,7 +45,7 @@ private final class AppDelegate: NSObject, NSApplicationDelegate {
 
 		quitTask = Task {
 			do {
-				try await Task.sleep(for: .seconds(10))
+				try await Task.sleep(for: AppTiming.quitDelay)
 				NSApp.terminate(nil)
 			} catch {}
 		}
