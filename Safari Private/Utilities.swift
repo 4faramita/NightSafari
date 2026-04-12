@@ -2,9 +2,9 @@ import Cocoa
 import ApplicationServices
 
 
-func openPrivateSafariWindow(with urls: [URL]) {
+func openPrivateSafariWindow(with urls: [URL]) async {
 	guard !urls.isEmpty else { return }
-	guard let pid = launchOrActivateSafari() else { return }
+	guard let pid = await launchOrActivateSafari() else { return }
 
 	let axApp = AXUIElementCreateApplication(pid)
 
@@ -14,7 +14,7 @@ func openPrivateSafariWindow(with urls: [URL]) {
 	} else {
 		let before = axWindowCount(axApp)
 		postKeystroke(virtualKey: 0x2D, flags: [.maskCommand, .maskShift], to: pid) // Cmd+Shift+N
-		pollUntil(seconds: 1.0, interval: 0.05) { axWindowCount(axApp) > before }
+		await pollUntil(seconds: 1.0, interval: 0.05) { axWindowCount(axApp) > before }
 		safariOpenLocations(urls)
 		runAppleScript("tell application \"Safari\" to close tab 1 of front window")
 	}
@@ -24,7 +24,7 @@ func openPrivateSafariWindow(with urls: [URL]) {
 
 private let safariBundleID = "com.apple.Safari"
 
-private func launchOrActivateSafari() -> pid_t? {
+private func launchOrActivateSafari() async -> pid_t? {
 	if let app = NSRunningApplication.runningApplications(withBundleIdentifier: safariBundleID).first {
 		app.activate(options: [])
 		return app.processIdentifier
@@ -32,14 +32,8 @@ private func launchOrActivateSafari() -> pid_t? {
 	guard let safariURL = NSWorkspace.shared.urlForApplication(withBundleIdentifier: safariBundleID) else { return nil }
 	let config = NSWorkspace.OpenConfiguration()
 	config.activates = true
-	var launched: NSRunningApplication?
-	let sem = DispatchSemaphore(value: 0)
-	NSWorkspace.shared.openApplication(at: safariURL, configuration: config) { app, _ in
-		launched = app
-		sem.signal()
-	}
-	_ = sem.wait(timeout: .now() + 5)
-	return launched?.processIdentifier
+	guard let app = try? await NSWorkspace.shared.openApplication(at: safariURL, configuration: config) else { return nil }
+	return app.processIdentifier
 }
 
 // MARK: - Accessibility helpers
@@ -81,14 +75,14 @@ private func safariOpenLocations(_ urls: [URL]) {
 
 // MARK: - Polling
 
-private func pollUntil(seconds: Double, interval: Double, condition: () -> Bool) {
+private func pollUntil(seconds: Double, interval: Double, condition: () -> Bool) async {
 	for _ in 0..<Int(seconds / interval) {
 		if condition() { return }
-		Thread.sleep(forTimeInterval: interval)
+		try? await Task.sleep(for: .milliseconds(Int(interval * 1000)))
 	}
 }
 
-// MARK: - AppleScript fallback (kept for potential future use)
+// MARK: - AppleScript
 
 @discardableResult
 func runAppleScript(_ source: String) -> String? {

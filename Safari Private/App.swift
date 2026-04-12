@@ -6,12 +6,11 @@ struct AppMain: App {
 
 	var body: some Scene {
 		Settings {}
-//			.defaultLaunchBehavior(.suppressed)
 	}
 }
 
 private final class AppDelegate: NSObject, NSApplicationDelegate {
-	private var task: Task<Void, Never>?
+	private var quitTask: Task<Void, Never>?
 
 	func applicationDidFinishLaunching(_ notification: Notification) {
 		_ = Permissions.Accessibility.requestAccess()
@@ -27,15 +26,17 @@ private final class AppDelegate: NSObject, NSApplicationDelegate {
 			return
 		}
 
-		openPrivateSafariWindow(with: urls)
-		scheduleQuit()
+		Task { @MainActor in
+			await openPrivateSafariWindow(with: urls)
+			scheduleQuit()
+		}
 	}
 
 	@MainActor
 	private func scheduleQuit() {
-		task?.cancel()
+		quitTask?.cancel()
 
-		task = Task {
+		quitTask = Task {
 			do {
 				try await Task.sleep(for: .seconds(10))
 				NSApp.terminate(nil)
