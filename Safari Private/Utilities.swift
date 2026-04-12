@@ -9,13 +9,15 @@ private enum SafariPrivateConfig {
 
 func openPrivateSafariWindow(with urls: [URL]) async {
 	guard !urls.isEmpty else { return }
-	guard let pid = await launchOrActivateSafari() else { return }
+	guard let launchState = await launchOrActivateSafari() else { return }
+	let pid = launchState.pid
 
 	let axApp = AXUIElementCreateApplication(pid)
 
 	if let privateWindow = findPrivateWindow(in: axApp) {
 		AXUIElementPerformAction(privateWindow, kAXRaiseAction as CFString)
-		_ = safariOpenLocations(urls)
+		guard safariOpenLocations(urls) else { return }
+		activateSafari(pid: pid)
 	} else {
 		postKeystroke(virtualKey: SafariPrivateConfig.newWindowKeyCode, flags: [.maskCommand, .maskShift], to: pid) // Cmd+Shift+N
 
@@ -33,7 +35,11 @@ func openPrivateSafariWindow(with urls: [URL]) async {
 
 		AXUIElementPerformAction(privateWindow, kAXRaiseAction as CFString)
 		guard safariOpenLocations(urls) else { return }
-		_ = runAppleScript("tell application \"Safari\" to close tab 1 of front window")
+		activateSafari(pid: pid)
+		if launchState.didColdLaunch {
+			_ = closeNonFrontSafariWindows()
+		}
+		_ = closeFrontSafariWindowStartPageTab()
 	}
 }
 
@@ -41,16 +47,26 @@ func openPrivateSafariWindow(with urls: [URL]) async {
 
 private let safariBundleID = "com.apple.Safari"
 
-private func launchOrActivateSafari() async -> pid_t? {
+private struct SafariLaunchState {
+	let pid: pid_t
+	let didColdLaunch: Bool
+}
+
+private func launchOrActivateSafari() async -> SafariLaunchState? {
 	if let app = NSRunningApplication.runningApplications(withBundleIdentifier: safariBundleID).first {
-		app.activate(options: [])
-		return app.processIdentifier
+		return SafariLaunchState(pid: app.processIdentifier, didColdLaunch: false)
 	}
 	guard let safariURL = NSWorkspace.shared.urlForApplication(withBundleIdentifier: safariBundleID) else { return nil }
 	let config = NSWorkspace.OpenConfiguration()
-	config.activates = true
+	config.activates = false
+	config.hides = true
 	guard let app = try? await NSWorkspace.shared.openApplication(at: safariURL, configuration: config) else { return nil }
-	return app.processIdentifier
+	return SafariLaunchState(pid: app.processIdentifier, didColdLaunch: true)
+}
+
+private func activateSafari(pid: pid_t) {
+	guard let app = NSRunningApplication(processIdentifier: pid) else { return }
+	app.activate(options: [])
 }
 
 // MARK: - Accessibility helpers
@@ -89,6 +105,60 @@ private func safariOpenLocations(_ urls: [URL]) -> Bool {
 			return true
 		case .failure(let error):
 			NSLog("Safari Private: Failed to open URL(s): %@", error.localizedDescription)
+			return false
+	}
+}
+
+@discardableResult
+private func closeNonFrontSafariWindows() -> Bool {
+	switch runAppleScript("""
+	tell application "Safari"
+		if (count of windows) > 1 then
+			set frontWindowID to id of front window
+			set otherWindows to every window whose id is not frontWindowID
+			repeat with targetWindow in otherWindows
+				try
+					close targetWindow
+				end try
+			end repeat
+		end if
+	end tell
+	""") {
+		case .success:
+			return true
+		case .failure(let error):
+			NSLog("Safari Private: Failed to close non-front Safari windows: %@", error.localizedDescription)
+			return false
+	}
+}
+
+@discardableResult
+private func closeFrontSafariWindowStartPageTab() -> Bool {
+	switch runAppleScript("""
+	tell application "Safari"
+		if (count of windows) > 0 then
+			set frontWindowID to id of front window
+			set startPageURLs to {"favorites://", "favorites:///", "about:blank", "x-apple-startpage://", "x-apple-startpage:///"}
+			repeat with targetTab in (tabs of window id frontWindowID)
+				try
+					set tabURL to URL of targetTab
+				on error
+					set tabURL to ""
+				end try
+				if startPageURLs contains tabURL then
+					try
+						close targetTab
+					end try
+					exit repeat
+				end if
+			end repeat
+		end if
+	end tell
+	""") {
+		case .success:
+			return true
+		case .failure(let error):
+			NSLog("Safari Private: Failed to close Start Page tab: %@", error.localizedDescription)
 			return false
 	}
 }
