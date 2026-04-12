@@ -16,10 +16,13 @@ func openPrivateSafariWindow(with urls: [URL]) {
 
 		tell application "Safari" to activate
 
-		if safariRunning then
-			delay 0.2
-		else
-			delay 1.0
+		if not safariRunning then
+			repeat 40 times
+				delay 0.05
+				tell application "System Events"
+					if exists application process "Safari" then exit repeat
+				end tell
+			end repeat
 		end if
 
 		set foundPrivateWindow to false
@@ -39,17 +42,23 @@ func openPrivateSafariWindow(with urls: [URL]) {
 
 		if foundPrivateWindow then
 			tell application "Safari"
-				delay 0.1
 				\#(allURLsScript)
 			end tell
 		else
+			tell application "Safari"
+				set windowCountBefore to count of windows
+			end tell
+
 			tell application "System Events" to tell application process "Safari"
 				set frontmost to true
 				keystroke "n" using {shift down, command down}
 			end tell
 
 			tell application "Safari"
-				delay 0.3
+				repeat 20 times
+					if (count of windows) > windowCountBefore then exit repeat
+					delay 0.05
+				end repeat
 				set startPageTab to current tab of front window
 				\#(allURLsScript)
 				close startPageTab
