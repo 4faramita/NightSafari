@@ -14,11 +14,16 @@ func openPrivateSafariWindow(with urls: [URL]) async {
 
 	let axApp = AXUIElementCreateApplication(pid)
 
-	if let privateWindow = findPrivateWindow(in: axApp) {
-		AXUIElementPerformAction(privateWindow, kAXRaiseAction as CFString)
-		guard safariOpenLocations(urls) else { return }
-		activateSafari(pid: pid)
-	} else {
+		if let privateWindow = findPrivateWindow(in: axApp) {
+			AXUIElementPerformAction(privateWindow, kAXRaiseAction as CFString)
+			let openedNatively = await openURLsInSafariNatively(urls)
+			activateSafari(pid: pid)
+
+			guard openedNatively || runSafariFallbackAutomation(urls: urls, shouldOpenLocations: true, shouldCloseNonFrontWindows: false) else {
+				return
+			}
+			_ = closeFrontSafariWindowStartPageTab()
+		} else {
 		postKeystroke(virtualKey: SafariPrivateConfig.newWindowKeyCode, flags: [.maskCommand, .maskShift], to: pid) // Cmd+Shift+N
 
 		let privateWindowAppeared = await pollUntil(
@@ -34,13 +39,22 @@ func openPrivateSafariWindow(with urls: [URL]) async {
 		}
 
 		AXUIElementPerformAction(privateWindow, kAXRaiseAction as CFString)
-		guard safariOpenLocations(urls) else { return }
-		activateSafari(pid: pid)
-		if launchState.didColdLaunch {
-			_ = closeNonFrontSafariWindows()
+
+		let openedNatively = await openURLsInSafariNatively(urls)
+			let closedNonFrontWindows = launchState.didColdLaunch
+				? closeNonFrontAXWindows(in: axApp, keeping: privateWindow)
+				: true
+
+			activateSafari(pid: pid)
+			if !openedNatively || !closedNonFrontWindows {
+				_ = runSafariFallbackAutomation(
+					urls: urls,
+					shouldOpenLocations: !openedNatively,
+					shouldCloseNonFrontWindows: !closedNonFrontWindows
+				)
+			}
+			_ = closeFrontSafariWindowStartPageTab()
 		}
-		_ = closeFrontSafariWindowStartPageTab()
-	}
 }
 
 // MARK: - Safari launch / activate
@@ -94,40 +108,83 @@ private func postKeystroke(virtualKey: CGKeyCode, flags: CGEventFlags, to pid: p
 	up?.postToPid(pid)
 }
 
-@discardableResult
-private func safariOpenLocations(_ urls: [URL]) -> Bool {
-	let commands = urls
-		.map { "open location \"\($0.absoluteString.appleScriptEscaped)\"" }
-		.joined(separator: "\n\t")
+private func openURLsInSafariNatively(_ urls: [URL]) async -> Bool {
+	guard !urls.isEmpty else { return true }
+	guard let safariURL = NSWorkspace.shared.urlForApplication(withBundleIdentifier: safariBundleID) else { return false }
 
-	switch runAppleScript("tell application \"Safari\"\n\t\(commands)\nend tell") {
-		case .success:
-			return true
-		case .failure(let error):
-			NSLog("Safari Private: Failed to open URL(s): %@", error.localizedDescription)
-			return false
+	let config = NSWorkspace.OpenConfiguration()
+	config.activates = false
+
+	return await withCheckedContinuation { continuation in
+		NSWorkspace.shared.open(urls, withApplicationAt: safariURL, configuration: config) { _, error in
+			if let error {
+				NSLog("Safari Private: Native URL open failed: %@", error.localizedDescription)
+				continuation.resume(returning: false)
+				return
+			}
+
+			continuation.resume(returning: true)
+		}
 	}
 }
 
 @discardableResult
-private func closeNonFrontSafariWindows() -> Bool {
-	switch runAppleScript("""
+private func closeNonFrontAXWindows(in axApp: AXUIElement, keeping frontWindow: AXUIElement) -> Bool {
+	var ref: CFTypeRef?
+	guard AXUIElementCopyAttributeValue(axApp, kAXWindowsAttribute as CFString, &ref) == .success,
+		  let windows = ref as? [AXUIElement] else { return false }
+
+	var success = true
+
+	for window in windows where !CFEqual(window, frontWindow) {
+		let result = AXUIElementPerformAction(window, "AXClose" as CFString)
+		if result != .success {
+			success = false
+			NSLog("Safari Private: Failed to close non-front window with AX (AXError: %d).", result.rawValue)
+		}
+	}
+
+	return success
+}
+
+@discardableResult
+private func runSafariFallbackAutomation(
+	urls: [URL],
+	shouldOpenLocations: Bool,
+	shouldCloseNonFrontWindows: Bool
+) -> Bool {
+	let openLocationsBlock = shouldOpenLocations
+		? urls
+			.map { "\t\topen location \"\($0.absoluteString.appleScriptEscaped)\"" }
+			.joined(separator: "\n")
+		: ""
+
+	let closeNonFrontWindowsBlock = shouldCloseNonFrontWindows
+		? """
+		\t\tset otherWindows to every window whose id is not frontWindowID
+		\t\trepeat with targetWindow in otherWindows
+		\t\t\ttry
+		\t\t\t\tclose targetWindow
+		\t\t\tend try
+		\t\tend repeat
+		"""
+		: ""
+
+	let source = """
 	tell application "Safari"
-		if (count of windows) > 1 then
+		if (count of windows) > 0 then
 			set frontWindowID to id of front window
-			set otherWindows to every window whose id is not frontWindowID
-			repeat with targetWindow in otherWindows
-				try
-					close targetWindow
-				end try
-			end repeat
+	\(openLocationsBlock.isEmpty ? "" : "\n\(openLocationsBlock)")
+	\(closeNonFrontWindowsBlock.isEmpty ? "" : "\n\(closeNonFrontWindowsBlock)")
 		end if
 	end tell
-	""") {
+	"""
+
+	switch runAppleScript(source) {
 		case .success:
 			return true
 		case .failure(let error):
-			NSLog("Safari Private: Failed to close non-front Safari windows: %@", error.localizedDescription)
+			NSLog("Safari Private: Fallback AppleScript failed: %@", error.localizedDescription)
 			return false
 	}
 }
