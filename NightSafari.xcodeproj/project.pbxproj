@@ -18,7 +18,7 @@
 		E3F868D128B115BB00CD969D /* NightSafari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NightSafari.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3F868D428B115BB00CD969D /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E3F868D828B115BC00CD969D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E3F868E328B1162200CD969D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Safari Private/Info.plist"; sourceTree = SOURCE_ROOT; };
+		E3F868E328B1162200CD969D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "NightSafari/Info.plist"; sourceTree = SOURCE_ROOT; };
 		E3F868E428B11F1D00CD969D /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -34,7 +34,7 @@
 		E3F868C828B115BB00CD969D = {
 			isa = PBXGroup;
 			children = (
-				E3F868D328B115BB00CD969D /* Safari Private */,
+				E3F868D328B115BB00CD969D /* NightSafari */,
 				E3F868D228B115BB00CD969D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,7 +47,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E3F868D328B115BB00CD969D /* Safari Private */ = {
+		E3F868D328B115BB00CD969D /* NightSafari */ = {
 			isa = PBXGroup;
 			children = (
 				E3F868D428B115BB00CD969D /* App.swift */,
@@ -56,15 +56,15 @@
 				E37829052EA773CB007817A0 /* AppIcon.icon */,
 				E3F868E328B1162200CD969D /* Info.plist */,
 			);
-			path = "Safari Private";
+			path = NightSafari;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E3F868D028B115BB00CD969D /* Safari Private */ = {
+		E3F868D028B115BB00CD969D /* NightSafari */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E3F868E028B115BC00CD969D /* Build configuration list for PBXNativeTarget "Safari Private" */;
+			buildConfigurationList = E3F868E028B115BC00CD969D /* Build configuration list for PBXNativeTarget "NightSafari" */;
 			buildPhases = (
 				E3F868CD28B115BB00CD969D /* Sources */,
 				E3F868CE28B115BB00CD969D /* Frameworks */,
@@ -72,8 +72,8 @@
 			);
 			buildRules = (
 			);
-			name = "Safari Private";
-			productName = "Safari Private";
+			name = NightSafari;
+			productName = NightSafari;
 			productReference = E3F868D128B115BB00CD969D /* NightSafari.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -92,7 +92,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E3F868CC28B115BB00CD969D /* Build configuration list for PBXProject "Safari Private" */;
+			buildConfigurationList = E3F868CC28B115BB00CD969D /* Build configuration list for PBXProject "NightSafari" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -106,7 +106,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E3F868D028B115BB00CD969D /* Safari Private */,
+				E3F868D028B115BB00CD969D /* NightSafari */,
 			);
 		};
 /* End PBXProject section */
@@ -132,7 +132,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		E3F868DE28B115BC00CD969D /* Debug configuration for PBXProject "Safari Private" */ = {
+		E3F868DE28B115BC00CD969D /* Debug configuration for PBXProject "NightSafari" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -197,7 +197,7 @@
 			};
 			name = Debug;
 		};
-		E3F868DF28B115BC00CD969D /* Release configuration for PBXProject "Safari Private" */ = {
+		E3F868DF28B115BC00CD969D /* Release configuration for PBXProject "NightSafari" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -255,7 +255,7 @@
 			};
 			name = Release;
 		};
-		E3F868E128B115BC00CD969D /* Debug configuration for PBXNativeTarget "Safari Private" */ = {
+		E3F868E128B115BC00CD969D /* Debug configuration for PBXNativeTarget "NightSafari" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -265,6 +265,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = JUQ4EUY679;
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -275,7 +276,7 @@
 				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
 				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Safari Private/Info.plist";
+				INFOPLIST_FILE = "NightSafari/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Required to open a private window in Safari.";
@@ -284,7 +285,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sindresorhus.Safari-Private";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sindresorhus.NightSafari";
 				PRODUCT_NAME = NightSafari;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
@@ -298,7 +299,7 @@
 			};
 			name = Debug;
 		};
-		E3F868E228B115BC00CD969D /* Release configuration for PBXNativeTarget "Safari Private" */ = {
+		E3F868E228B115BC00CD969D /* Release configuration for PBXNativeTarget "NightSafari" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -308,6 +309,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = JUQ4EUY679;
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -318,7 +320,7 @@
 				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
 				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Safari Private/Info.plist";
+				INFOPLIST_FILE = "NightSafari/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Required to open a private window in Safari.";
@@ -327,7 +329,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sindresorhus.Safari-Private";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sindresorhus.NightSafari";
 				PRODUCT_NAME = NightSafari;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
@@ -344,19 +346,19 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E3F868CC28B115BB00CD969D /* Build configuration list for PBXProject "Safari Private" */ = {
+		E3F868CC28B115BB00CD969D /* Build configuration list for PBXProject "NightSafari" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E3F868DE28B115BC00CD969D /* Debug configuration for PBXProject "Safari Private" */,
-				E3F868DF28B115BC00CD969D /* Release configuration for PBXProject "Safari Private" */,
+				E3F868DE28B115BC00CD969D /* Debug configuration for PBXProject "NightSafari" */,
+				E3F868DF28B115BC00CD969D /* Release configuration for PBXProject "NightSafari" */,
 			);
 			defaultConfigurationName = Release;
 		};
-		E3F868E028B115BC00CD969D /* Build configuration list for PBXNativeTarget "Safari Private" */ = {
+		E3F868E028B115BC00CD969D /* Build configuration list for PBXNativeTarget "NightSafari" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E3F868E128B115BC00CD969D /* Debug configuration for PBXNativeTarget "Safari Private" */,
-				E3F868E228B115BC00CD969D /* Release configuration for PBXNativeTarget "Safari Private" */,
+				E3F868E128B115BC00CD969D /* Debug configuration for PBXNativeTarget "NightSafari" */,
+				E3F868E228B115BC00CD969D /* Release configuration for PBXNativeTarget "NightSafari" */,
 			);
 			defaultConfigurationName = Release;
 		};

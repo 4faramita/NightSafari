@@ -1,7 +1,7 @@
 import Cocoa
 import ApplicationServices
 
-private enum SafariPrivateConfig {
+private enum NightSafariConfig {
 	static let newWindowKeyCode: CGKeyCode = 0x2D // N
 	static let privateWindowOpenTimeoutSeconds = 1.0
 	static let pollIntervalSeconds = 0.05
@@ -24,17 +24,17 @@ func openPrivateSafariWindow(with urls: [URL]) async {
 			}
 			_ = closeFrontSafariWindowStartPageTab()
 		} else {
-		postKeystroke(virtualKey: SafariPrivateConfig.newWindowKeyCode, flags: [.maskCommand, .maskShift], to: pid) // Cmd+Shift+N
+		postKeystroke(virtualKey: NightSafariConfig.newWindowKeyCode, flags: [.maskCommand, .maskShift], to: pid) // Cmd+Shift+N
 
 		let privateWindowAppeared = await pollUntil(
-			seconds: SafariPrivateConfig.privateWindowOpenTimeoutSeconds,
-			interval: SafariPrivateConfig.pollIntervalSeconds
+			seconds: NightSafariConfig.privateWindowOpenTimeoutSeconds,
+			interval: NightSafariConfig.pollIntervalSeconds
 		) {
 			findPrivateWindow(in: axApp) != nil
 		}
 
 		guard privateWindowAppeared, let privateWindow = findPrivateWindow(in: axApp) else {
-			NSLog("Safari Private: Timed out waiting for private window to appear.")
+			NSLog("NightSafari: Timed out waiting for private window to appear.")
 			return
 		}
 
@@ -118,7 +118,7 @@ private func openURLsInSafariNatively(_ urls: [URL]) async -> Bool {
 	return await withCheckedContinuation { continuation in
 		NSWorkspace.shared.open(urls, withApplicationAt: safariURL, configuration: config) { _, error in
 			if let error {
-				NSLog("Safari Private: Native URL open failed: %@", error.localizedDescription)
+				NSLog("NightSafari: Native URL open failed: %@", error.localizedDescription)
 				continuation.resume(returning: false)
 				return
 			}
@@ -140,7 +140,7 @@ private func closeNonFrontAXWindows(in axApp: AXUIElement, keeping frontWindow: 
 		let result = AXUIElementPerformAction(window, "AXClose" as CFString)
 		if result != .success {
 			success = false
-			NSLog("Safari Private: Failed to close non-front window with AX (AXError: %d).", result.rawValue)
+			NSLog("NightSafari: Failed to close non-front window with AX (AXError: %d).", result.rawValue)
 		}
 	}
 
@@ -184,7 +184,7 @@ private func runSafariFallbackAutomation(
 		case .success:
 			return true
 		case .failure(let error):
-			NSLog("Safari Private: Fallback AppleScript failed: %@", error.localizedDescription)
+			NSLog("NightSafari: Fallback AppleScript failed: %@", error.localizedDescription)
 			return false
 	}
 }
@@ -215,7 +215,7 @@ private func closeFrontSafariWindowStartPageTab() -> Bool {
 		case .success:
 			return true
 		case .failure(let error):
-			NSLog("Safari Private: Failed to close Start Page tab: %@", error.localizedDescription)
+			NSLog("NightSafari: Failed to close Start Page tab: %@", error.localizedDescription)
 			return false
 	}
 }

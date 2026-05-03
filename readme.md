@@ -8,7 +8,7 @@ The use-case is being able to open a URL in a private Safari window from a brows
 
 ## Download
 
-[**Latest release**](https://github.com/sindresorhus/Safari-Private/releases/latest)
+[**Latest release**](https://github.com/sindresorhus/NightSafari/releases/latest)
 
 <sup>Requires macOS 13 or later.</sup>
 
