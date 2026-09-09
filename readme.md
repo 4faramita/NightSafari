@@ -1,39 +1,45 @@
 # NightSafari
 
-> Open the given URL in a private Safari window
+> Open links in a newly created private Safari window
 
-This is a fake browser that simply opens the given URL in a private Safari window and then quits.
+NightSafari is a lightweight URL handler for browser picker apps. Each group of links is opened in a new private Safari window, then NightSafari quits. It never closes existing Safari windows or tabs.
 
-The use-case is being able to open a URL in a private Safari window from a browser picker app like [Velja](https://sindresorhus.com/velja).
+The main use case is opening a link privately from a browser picker app such as [Velja](https://sindresorhus.com/velja).
 
-## Download
-
-[**Latest release**](https://github.com/sindresorhus/NightSafari/releases/latest)
-
-<sup>Requires macOS 13 or later.</sup>
+Requires macOS 13.5 or later.
 
 ## Install
 
-- Download the app and unzip it.
-- Move the app into the `/Applications` folder.
-- Launch the app once to grant the required permissions.
+- Download a signed and notarized release from the distributor.
+- Move NightSafari to `/Applications`.
+- Open NightSafari once, review why each permission is needed, and allow Accessibility access.
+- Choose “Request Safari Access” and allow the macOS Automation request.
+- Use “Open Test Page Privately” to verify the setup.
+
+If a permission was denied, NightSafari provides buttons that open the corresponding Privacy & Security settings.
 
 ## Usage
 
-Open a URL with the app like you would with normal Safari.
+Open an HTTP or HTTPS URL with NightSafari as you would with a regular browser. For example, enable NightSafari in Velja and select it from the browser prompt.
 
-For example, enable the “NightSafari” browser in the Velja settings and then select it in the browser prompt when clicking a link.
+Keep Safari’s toolbar visible so NightSafari can verify its private address field. If Safari’s interface cannot be verified, or more than one window appears during setup, NightSafari leaves the links unopened and offers Retry. New incoming links wait behind a failed batch until it is retried.
 
-## Related
+## Privacy
 
-- [Copy URL](https://github.com/sindresorhus/Copy-URL) - Adds copy functionality to browser picker apps
+URLs are processed only on the Mac. NightSafari does not store them or send them to the developer.
 
-## Links
+## Direct distribution
 
-- [My other apps](https://sindresorhus.com/apps)
+This project is configured for direct distribution, not the Mac App Store. A public release must be signed with a Developer ID Application certificate, submitted to Apple for notarization, and stapled before packaging.
+
+The Release configuration uses the hardened runtime and does not force an Apple Development signing identity. Use Xcode Organizer’s “Developer ID” distribution flow with the distributor’s Apple Developer account.
+
+The app intentionally does not enable App Sandbox because it uses Accessibility to activate Safari’s New Private Window menu command and verify the browser toolbar, then Safari Automation to load links into that specific window.
+
+Private-window verification reads localized UI descriptions from the installed Safari resources. It does not use webpage titles or content as proof of private browsing. Changes to Safari’s interface or resources may require an update; an unrecognized interface stops navigation.
 
 ## License
 
-The code is under MIT license.
+The code is available under the MIT License. A copy is included in the application bundle.
 
-The Safari name and icon is trademarked by Apple. This project is not affiliated with Apple.
+Safari and its icon are trademarks of Apple Inc. This project is not affiliated with or endorsed by Apple.
