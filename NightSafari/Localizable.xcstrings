@@ -1,0 +1,97 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "error.accessibilityDenied" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Accessibility access is required to create and verify a new private Safari window." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "需要輔助使用權限，才能建立並確認新的 Safari 私密瀏覽視窗。" } }
+      }
+    },
+    "error.appleScriptCreation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "The Safari automation request could not be created." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "無法建立 Safari 自動化要求。" } }
+      }
+    },
+    "error.automationDenied" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Safari Automation access was denied. Allow it in System Settings, then retry." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "Safari 自動化權限遭拒。請在「系統設定」中允許，然後重試。" } }
+      }
+    },
+    "error.automationFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Safari could not load the links: %@" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "Safari 無法載入連結：%@" } }
+      }
+    },
+    "error.privateWindowCommandUnavailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Safari’s New Private Window command is unavailable. No links were opened." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "Safari 的「新增私密視窗」指令目前無法使用，因此未開啟任何連結。" } }
+      }
+    },
+    "error.automationRequired" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Allow Safari Automation access before opening links." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "請先允許 Safari 自動化權限，再開啟連結。" } }
+      }
+    },
+    "error.privateWindowUnverified" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "The new Safari window could not be verified as private. Keep Safari’s toolbar visible, then retry. No links were opened." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "無法確認新的 Safari 視窗為私密瀏覽。請保持 Safari 工具列顯示後重試。目前未開啟任何連結。" } }
+      }
+    },
+    "error.safariActivationFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Safari could not be brought to the front." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "無法將 Safari 帶到最前方。" } }
+      }
+    },
+    "error.safariLaunchFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Safari could not be opened: %@" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "無法開啟 Safari：%@" } }
+      }
+    },
+    "error.safariNotReady" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Safari did not become ready in time." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "Safari 未及時完成準備。" } }
+      }
+    },
+    "error.safariUnavailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Safari could not be found on this Mac." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "這台 Mac 上找不到 Safari。" } }
+      }
+    },
+    "error.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Could Not Open Privately" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "無法以私密瀏覽開啟" } }
+      }
+    },
+    "error.unknownAutomation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unknown Safari automation error." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "未知的 Safari 自動化錯誤。" } }
+      }
+    }
+  },
+  "version" : "1.1"
+}

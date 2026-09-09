@@ -31,5 +31,7 @@
 			</array>
 		</dict>
 	</array>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>NightSafari uses Automation to load the links you choose into the newly created private Safari window.</string>
 </dict>
 </plist>

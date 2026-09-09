@@ -1,5 +1,5 @@
 import Cocoa
-import ApplicationServices
+@preconcurrency import ApplicationServices
 
 private enum NightSafariConfig {
 	static let newWindowKeyCode: CGKeyCode = 0x2D // N
@@ -261,19 +261,6 @@ enum Permissions {
 				kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true
 			] as CFDictionary)
 		}
-	}
-}
-
-struct AppleScriptExecutionError: LocalizedError {
-	let message: String
-	let code: Int?
-
-	var errorDescription: String? {
-		if let code {
-			return "\(message) (code: \(code))"
-		}
-
-		return message
 	}
 }
 

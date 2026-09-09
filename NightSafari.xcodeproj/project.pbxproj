@@ -7,23 +7,86 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E37829062EA773CB007817A0 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = E37829052EA773CB007817A0 /* AppIcon.icon */; };
-		E3F868D528B115BB00CD969D /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F868D428B115BB00CD969D /* App.swift */; };
-		E3F868D928B115BC00CD969D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3F868D828B115BC00CD969D /* Assets.xcassets */; };
-		E3F868E528B11F1D00CD969D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F868E428B11F1D00CD969D /* Utilities.swift */; };
+		200000000000000000000001 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000001 /* App.swift */; };
+		200000000000000000000005 /* PermissionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000005 /* PermissionStatus.swift */; };
+		200000000000000000000006 /* SystemAccessibilityPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000006 /* SystemAccessibilityPermission.swift */; };
+		200000000000000000000007 /* SystemAutomationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000007 /* SystemAutomationPermission.swift */; };
+		200000000000000000000008 /* AppleScriptExecutionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000008 /* AppleScriptExecutionError.swift */; };
+		200000000000000000000009 /* SystemAppleScriptRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000009 /* SystemAppleScriptRunner.swift */; };
+		20000000000000000000000A /* AppleScriptSourceBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000A /* AppleScriptSourceBuilder.swift */; };
+		20000000000000000000000B /* PrivateBrowsingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000B /* PrivateBrowsingError.swift */; };
+		20000000000000000000000C /* SafariPrivateWindowOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000C /* SafariPrivateWindowOpener.swift */; };
+		200000000000000000000010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000010 /* Assets.xcassets */; };
+		200000000000000000000011 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000011 /* AppIcon.icon */; };
+		200000000000000000000012 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000013 /* Localizable.xcstrings */; };
+		200000000000000000000013 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000014 /* InfoPlist.xcstrings */; };
+		200000000000000000000022 /* AppleScriptSourceBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000022 /* AppleScriptSourceBuilderTests.swift */; };
+		200000000000000000000031 /* SafariWindowAutomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000031 /* SafariWindowAutomation.swift */; };
+		200000000000000000000032 /* SafariWindowSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000032 /* SafariWindowSnapshot.swift */; };
+		200000000000000000000033 /* SafariAccessibilityNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000033 /* SafariAccessibilityNode.swift */; };
+		200000000000000000000034 /* SafariAccessibilityElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000034 /* SafariAccessibilityElement.swift */; };
+		200000000000000000000035 /* SafariPrivateBrowsingVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000035 /* SafariPrivateBrowsingVerifier.swift */; };
+		200000000000000000000036 /* SafariInterfaceStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000036 /* SafariInterfaceStrings.swift */; };
+		200000000000000000000037 /* SystemSafariAutomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000037 /* SystemSafariAutomation.swift */; };
+		200000000000000000000041 /* FakeSafariWindowAutomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000041 /* FakeSafariWindowAutomation.swift */; };
+		200000000000000000000042 /* SafariPrivateWindowOpenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000042 /* SafariPrivateWindowOpenerTests.swift */; };
+		200000000000000000000043 /* TestSafariAccessibilityNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000043 /* TestSafariAccessibilityNode.swift */; };
+		200000000000000000000044 /* SafariPrivateBrowsingVerifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000044 /* SafariPrivateBrowsingVerifierTests.swift */; };
+		200000000000000000000045 /* SafariWindowSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000045 /* SafariWindowSnapshotTests.swift */; };
+		200000000000000000000070 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000070 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		000000000000000000000019 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 000000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 000000000000000000000008;
+			remoteInfo = NightSafari;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		E37829052EA773CB007817A0 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
-		E3F868D128B115BB00CD969D /* NightSafari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NightSafari.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3F868D428B115BB00CD969D /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		E3F868D828B115BC00CD969D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E3F868E328B1162200CD969D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "NightSafari/Info.plist"; sourceTree = SOURCE_ROOT; };
-		E3F868E428B11F1D00CD969D /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		000000000000000000000006 /* NightSafari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NightSafari.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		000000000000000000000007 /* NightSafariTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NightSafariTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		100000000000000000000001 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		100000000000000000000005 /* PermissionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionStatus.swift; sourceTree = "<group>"; };
+		100000000000000000000006 /* SystemAccessibilityPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemAccessibilityPermission.swift; sourceTree = "<group>"; };
+		100000000000000000000007 /* SystemAutomationPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemAutomationPermission.swift; sourceTree = "<group>"; };
+		100000000000000000000008 /* AppleScriptExecutionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptExecutionError.swift; sourceTree = "<group>"; };
+		100000000000000000000009 /* SystemAppleScriptRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemAppleScriptRunner.swift; sourceTree = "<group>"; };
+		10000000000000000000000A /* AppleScriptSourceBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptSourceBuilder.swift; sourceTree = "<group>"; };
+		10000000000000000000000B /* PrivateBrowsingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateBrowsingError.swift; sourceTree = "<group>"; };
+		10000000000000000000000C /* SafariPrivateWindowOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariPrivateWindowOpener.swift; sourceTree = "<group>"; };
+		100000000000000000000010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		100000000000000000000011 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
+		100000000000000000000012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		100000000000000000000013 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		100000000000000000000014 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		100000000000000000000016 /* NightSafari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NightSafari.entitlements; sourceTree = "<group>"; };
+		100000000000000000000022 /* AppleScriptSourceBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptSourceBuilderTests.swift; sourceTree = "<group>"; };
+		100000000000000000000031 /* SafariWindowAutomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWindowAutomation.swift; sourceTree = "<group>"; };
+		100000000000000000000032 /* SafariWindowSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWindowSnapshot.swift; sourceTree = "<group>"; };
+		100000000000000000000033 /* SafariAccessibilityNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariAccessibilityNode.swift; sourceTree = "<group>"; };
+		100000000000000000000034 /* SafariAccessibilityElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariAccessibilityElement.swift; sourceTree = "<group>"; };
+		100000000000000000000035 /* SafariPrivateBrowsingVerifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariPrivateBrowsingVerifier.swift; sourceTree = "<group>"; };
+		100000000000000000000036 /* SafariInterfaceStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariInterfaceStrings.swift; sourceTree = "<group>"; };
+		100000000000000000000037 /* SystemSafariAutomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSafariAutomation.swift; sourceTree = "<group>"; };
+		100000000000000000000041 /* FakeSafariWindowAutomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSafariWindowAutomation.swift; sourceTree = "<group>"; };
+		100000000000000000000042 /* SafariPrivateWindowOpenerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariPrivateWindowOpenerTests.swift; sourceTree = "<group>"; };
+		100000000000000000000043 /* TestSafariAccessibilityNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSafariAccessibilityNode.swift; sourceTree = "<group>"; };
+		100000000000000000000044 /* SafariPrivateBrowsingVerifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariPrivateBrowsingVerifierTests.swift; sourceTree = "<group>"; };
+		100000000000000000000045 /* SafariWindowSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWindowSnapshotTests.swift; sourceTree = "<group>"; };
+		100000000000000000000070 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E3F868CE28B115BB00CD969D /* Frameworks */ = {
+		00000000000000000000000B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		00000000000000000000000E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
 			);
@@ -31,108 +94,208 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E3F868C828B115BB00CD969D = {
+		000000000000000000000002 = {
 			isa = PBXGroup;
 			children = (
-				E3F868D328B115BB00CD969D /* NightSafari */,
-				E3F868D228B115BB00CD969D /* Products */,
+				000000000000000000000004 /* NightSafari */,
+				000000000000000000000005 /* NightSafariTests */,
+				000000000000000000000003 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		E3F868D228B115BB00CD969D /* Products */ = {
+		000000000000000000000003 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E3F868D128B115BB00CD969D /* NightSafari.app */,
+				000000000000000000000006 /* NightSafari.app */,
+				000000000000000000000007 /* NightSafariTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E3F868D328B115BB00CD969D /* NightSafari */ = {
+		000000000000000000000004 /* NightSafari */ = {
 			isa = PBXGroup;
 			children = (
-				E3F868D428B115BB00CD969D /* App.swift */,
-				E3F868E428B11F1D00CD969D /* Utilities.swift */,
-				E3F868D828B115BC00CD969D /* Assets.xcassets */,
-				E37829052EA773CB007817A0 /* AppIcon.icon */,
-				E3F868E328B1162200CD969D /* Info.plist */,
+				100000000000000000000001 /* App.swift */,
+				100000000000000000000070 /* Utilities.swift */,
+				100000000000000000000005 /* PermissionStatus.swift */,
+				100000000000000000000006 /* SystemAccessibilityPermission.swift */,
+				100000000000000000000007 /* SystemAutomationPermission.swift */,
+				100000000000000000000008 /* AppleScriptExecutionError.swift */,
+				100000000000000000000009 /* SystemAppleScriptRunner.swift */,
+				10000000000000000000000A /* AppleScriptSourceBuilder.swift */,
+				10000000000000000000000B /* PrivateBrowsingError.swift */,
+				10000000000000000000000C /* SafariPrivateWindowOpener.swift */,
+				100000000000000000000013 /* Localizable.xcstrings */,
+				100000000000000000000014 /* InfoPlist.xcstrings */,
+				100000000000000000000016 /* NightSafari.entitlements */,
+				100000000000000000000031 /* SafariWindowAutomation.swift */,
+				100000000000000000000032 /* SafariWindowSnapshot.swift */,
+				100000000000000000000033 /* SafariAccessibilityNode.swift */,
+				100000000000000000000034 /* SafariAccessibilityElement.swift */,
+				100000000000000000000035 /* SafariPrivateBrowsingVerifier.swift */,
+				100000000000000000000036 /* SafariInterfaceStrings.swift */,
+				100000000000000000000037 /* SystemSafariAutomation.swift */,
+				100000000000000000000010 /* Assets.xcassets */,
+				100000000000000000000011 /* AppIcon.icon */,
+				100000000000000000000012 /* Info.plist */,
 			);
 			path = NightSafari;
+			sourceTree = "<group>";
+		};
+		000000000000000000000005 /* NightSafariTests */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000041 /* FakeSafariWindowAutomation.swift */,
+				100000000000000000000042 /* SafariPrivateWindowOpenerTests.swift */,
+				100000000000000000000043 /* TestSafariAccessibilityNode.swift */,
+				100000000000000000000044 /* SafariPrivateBrowsingVerifierTests.swift */,
+				100000000000000000000045 /* SafariWindowSnapshotTests.swift */,
+				100000000000000000000022 /* AppleScriptSourceBuilderTests.swift */,
+			);
+			path = NightSafariTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E3F868D028B115BB00CD969D /* NightSafari */ = {
+		000000000000000000000008 /* NightSafari */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E3F868E028B115BC00CD969D /* Build configuration list for PBXNativeTarget "NightSafari" */;
+			buildConfigurationList = 000000000000000000000011 /* Build configuration list for PBXNativeTarget "NightSafari" */;
 			buildPhases = (
-				E3F868CD28B115BB00CD969D /* Sources */,
-				E3F868CE28B115BB00CD969D /* Frameworks */,
-				E3F868CF28B115BB00CD969D /* Resources */,
+				00000000000000000000000A /* Sources */,
+				00000000000000000000000B /* Frameworks */,
+				00000000000000000000000C /* Resources */,
 			);
 			buildRules = (
 			);
+			dependencies = (
+			);
 			name = NightSafari;
 			productName = NightSafari;
-			productReference = E3F868D128B115BB00CD969D /* NightSafari.app */;
+			productReference = 000000000000000000000006 /* NightSafari.app */;
 			productType = "com.apple.product-type.application";
+		};
+		000000000000000000000009 /* NightSafariTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 000000000000000000000012 /* Build configuration list for PBXNativeTarget "NightSafariTests" */;
+			buildPhases = (
+				00000000000000000000000D /* Sources */,
+				00000000000000000000000E /* Frameworks */,
+				00000000000000000000000F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00000000000000000000001A /* PBXTargetDependency */,
+			);
+			name = NightSafariTests;
+			productName = NightSafariTests;
+			productReference = 000000000000000000000007 /* NightSafariTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		E3F868C928B115BB00CD969D /* Project object */ = {
+		000000000000000000000001 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
-					E3F868D028B115BB00CD969D = {
-						CreatedOnToolsVersion = 13.4.1;
+					000000000000000000000008 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					000000000000000000000009 = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = 000000000000000000000008;
 					};
 				};
 			};
-			buildConfigurationList = E3F868CC28B115BB00CD969D /* Build configuration list for PBXProject "NightSafari" */;
+			buildConfigurationList = 000000000000000000000010 /* Build configuration list for PBXProject "NightSafari" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
-			mainGroup = E3F868C828B115BB00CD969D;
+			mainGroup = 000000000000000000000002;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 90;
-			productRefGroup = E3F868D228B115BB00CD969D /* Products */;
+			productRefGroup = 000000000000000000000003 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E3F868D028B115BB00CD969D /* NightSafari */,
+				000000000000000000000008 /* NightSafari */,
+				000000000000000000000009 /* NightSafariTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E3F868CF28B115BB00CD969D /* Resources */ = {
+		00000000000000000000000C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
-				E3F868D928B115BC00CD969D /* Assets.xcassets in Resources */,
-				E37829062EA773CB007817A0 /* AppIcon.icon in Resources */,
+				200000000000000000000010 /* Assets.xcassets in Resources */,
+				200000000000000000000011 /* AppIcon.icon in Resources */,
+				200000000000000000000012 /* Localizable.xcstrings in Resources */,
+				200000000000000000000013 /* InfoPlist.xcstrings in Resources */,
+			);
+		};
+		00000000000000000000000F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
 			);
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E3F868CD28B115BB00CD969D /* Sources */ = {
+		00000000000000000000000A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
-				E3F868E528B11F1D00CD969D /* Utilities.swift in Sources */,
-				E3F868D528B115BB00CD969D /* App.swift in Sources */,
+				200000000000000000000001 /* App.swift in Sources */,
+				200000000000000000000070 /* Utilities.swift in Sources */,
+				200000000000000000000005 /* PermissionStatus.swift in Sources */,
+				200000000000000000000006 /* SystemAccessibilityPermission.swift in Sources */,
+				200000000000000000000007 /* SystemAutomationPermission.swift in Sources */,
+				200000000000000000000008 /* AppleScriptExecutionError.swift in Sources */,
+				200000000000000000000009 /* SystemAppleScriptRunner.swift in Sources */,
+				20000000000000000000000A /* AppleScriptSourceBuilder.swift in Sources */,
+				20000000000000000000000B /* PrivateBrowsingError.swift in Sources */,
+				20000000000000000000000C /* SafariPrivateWindowOpener.swift in Sources */,
+				200000000000000000000031 /* SafariWindowAutomation.swift in Sources */,
+				200000000000000000000032 /* SafariWindowSnapshot.swift in Sources */,
+				200000000000000000000033 /* SafariAccessibilityNode.swift in Sources */,
+				200000000000000000000034 /* SafariAccessibilityElement.swift in Sources */,
+				200000000000000000000035 /* SafariPrivateBrowsingVerifier.swift in Sources */,
+				200000000000000000000036 /* SafariInterfaceStrings.swift in Sources */,
+				200000000000000000000037 /* SystemSafariAutomation.swift in Sources */,
+			);
+		};
+		00000000000000000000000D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+				200000000000000000000022 /* AppleScriptSourceBuilderTests.swift in Sources */,
+				200000000000000000000041 /* FakeSafariWindowAutomation.swift in Sources */,
+				200000000000000000000042 /* SafariPrivateWindowOpenerTests.swift in Sources */,
+				200000000000000000000043 /* TestSafariAccessibilityNode.swift in Sources */,
+				200000000000000000000044 /* SafariPrivateBrowsingVerifierTests.swift in Sources */,
+				200000000000000000000045 /* SafariWindowSnapshotTests.swift in Sources */,
 			);
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		00000000000000000000001A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 000000000000000000000008 /* NightSafari */;
+			targetProxy = 000000000000000000000019 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		E3F868DE28B115BC00CD969D /* Debug configuration for PBXProject "NightSafari" */ = {
+		000000000000000000000013 /* Debug configuration for PBXProject "NightSafari" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -186,6 +349,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -197,7 +361,7 @@
 			};
 			name = Debug;
 		};
-		E3F868DF28B115BC00CD969D /* Release configuration for PBXProject "NightSafari" */ = {
+		000000000000000000000014 /* Release configuration for PBXProject "NightSafari" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -245,6 +409,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -255,12 +420,13 @@
 			};
 			name = Release;
 		};
-		E3F868E128B115BC00CD969D /* Debug configuration for PBXNativeTarget "NightSafari" */ = {
+		000000000000000000000015 /* Debug configuration for PBXNativeTarget "NightSafari" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				AUTOMATION_APPLE_EVENTS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_ENTITLEMENTS = NightSafari/NightSafari.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 3;
@@ -269,42 +435,32 @@
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
-				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
-				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
-				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
-				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
-				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "NightSafari/Info.plist";
+				INFOPLIST_FILE = NightSafari/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Required to open a private window in Safari.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sindresorhus.NightSafari";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sindresorhus.NightSafari;
 				PRODUCT_NAME = NightSafari;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
-				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
-				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
-				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
-				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
-				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
-		E3F868E228B115BC00CD969D /* Release configuration for PBXNativeTarget "NightSafari" */ = {
+		000000000000000000000016 /* Release configuration for PBXNativeTarget "NightSafari" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				AUTOMATION_APPLE_EVENTS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_ENTITLEMENTS = NightSafari/NightSafari.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 3;
@@ -313,56 +469,93 @@
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
-				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
-				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
-				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
-				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
-				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "NightSafari/Info.plist";
+				INFOPLIST_FILE = NightSafari/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Required to open a private window in Safari.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sindresorhus.NightSafari";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sindresorhus.NightSafari;
 				PRODUCT_NAME = NightSafari;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
-				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
-				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
-				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
-				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
-				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		000000000000000000000017 /* Debug configuration for PBXNativeTarget "NightSafariTests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = JUQ4EUY679;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sindresorhus.NightSafariTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NightSafari.app/Contents/MacOS/NightSafari";
+			};
+			name = Debug;
+		};
+		000000000000000000000018 /* Release configuration for PBXNativeTarget "NightSafariTests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = JUQ4EUY679;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sindresorhus.NightSafariTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NightSafari.app/Contents/MacOS/NightSafari";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E3F868CC28B115BB00CD969D /* Build configuration list for PBXProject "NightSafari" */ = {
+		000000000000000000000010 /* Build configuration list for PBXProject "NightSafari" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E3F868DE28B115BC00CD969D /* Debug configuration for PBXProject "NightSafari" */,
-				E3F868DF28B115BC00CD969D /* Release configuration for PBXProject "NightSafari" */,
+				000000000000000000000013 /* Debug configuration for PBXProject "NightSafari" */,
+				000000000000000000000014 /* Release configuration for PBXProject "NightSafari" */,
 			);
 			defaultConfigurationName = Release;
 		};
-		E3F868E028B115BC00CD969D /* Build configuration list for PBXNativeTarget "NightSafari" */ = {
+		000000000000000000000011 /* Build configuration list for PBXNativeTarget "NightSafari" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E3F868E128B115BC00CD969D /* Debug configuration for PBXNativeTarget "NightSafari" */,
-				E3F868E228B115BC00CD969D /* Release configuration for PBXNativeTarget "NightSafari" */,
+				000000000000000000000015 /* Debug configuration for PBXNativeTarget "NightSafari" */,
+				000000000000000000000016 /* Release configuration for PBXNativeTarget "NightSafari" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		000000000000000000000012 /* Build configuration list for PBXNativeTarget "NightSafariTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				000000000000000000000017 /* Debug configuration for PBXNativeTarget "NightSafariTests" */,
+				000000000000000000000018 /* Release configuration for PBXNativeTarget "NightSafariTests" */,
 			);
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = E3F868C928B115BB00CD969D /* Project object */;
+	rootObject = 000000000000000000000001 /* Project object */;
 }
