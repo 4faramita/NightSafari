@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		200000000000000000000001 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000001 /* App.swift */; };
+		200000000000000000000002 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000002 /* AppDelegate.swift */; };
+		200000000000000000000003 /* ApplicationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000003 /* ApplicationModel.swift */; };
+		200000000000000000000004 /* AppPresentationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000004 /* AppPresentationError.swift */; };
 		200000000000000000000005 /* PermissionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000005 /* PermissionStatus.swift */; };
 		200000000000000000000006 /* SystemAccessibilityPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000006 /* SystemAccessibilityPermission.swift */; };
 		200000000000000000000007 /* SystemAutomationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000007 /* SystemAutomationPermission.swift */; };
@@ -16,11 +19,16 @@
 		20000000000000000000000A /* AppleScriptSourceBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000A /* AppleScriptSourceBuilder.swift */; };
 		20000000000000000000000B /* PrivateBrowsingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000B /* PrivateBrowsingError.swift */; };
 		20000000000000000000000C /* SafariPrivateWindowOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000C /* SafariPrivateWindowOpener.swift */; };
+		20000000000000000000000D /* PermissionStatusLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000D /* PermissionStatusLabel.swift */; };
+		20000000000000000000000E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000E /* SettingsView.swift */; };
+		20000000000000000000000F /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000F /* SettingsWindowController.swift */; };
 		200000000000000000000010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000010 /* Assets.xcassets */; };
 		200000000000000000000011 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000011 /* AppIcon.icon */; };
 		200000000000000000000012 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000013 /* Localizable.xcstrings */; };
 		200000000000000000000013 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000014 /* InfoPlist.xcstrings */; };
+		200000000000000000000021 /* RecordingOpenURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000021 /* RecordingOpenURLs.swift */; };
 		200000000000000000000022 /* AppleScriptSourceBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000022 /* AppleScriptSourceBuilderTests.swift */; };
+		200000000000000000000023 /* ApplicationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000023 /* ApplicationModelTests.swift */; };
 		200000000000000000000031 /* SafariWindowAutomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000031 /* SafariWindowAutomation.swift */; };
 		200000000000000000000032 /* SafariWindowSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000032 /* SafariWindowSnapshot.swift */; };
 		200000000000000000000033 /* SafariAccessibilityNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000033 /* SafariAccessibilityNode.swift */; };
@@ -33,7 +41,6 @@
 		200000000000000000000043 /* TestSafariAccessibilityNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000043 /* TestSafariAccessibilityNode.swift */; };
 		200000000000000000000044 /* SafariPrivateBrowsingVerifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000044 /* SafariPrivateBrowsingVerifierTests.swift */; };
 		200000000000000000000045 /* SafariWindowSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000045 /* SafariWindowSnapshotTests.swift */; };
-		200000000000000000000070 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000070 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +57,9 @@
 		000000000000000000000006 /* NightSafari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NightSafari.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		000000000000000000000007 /* NightSafariTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NightSafariTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		100000000000000000000001 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		100000000000000000000002 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		100000000000000000000003 /* ApplicationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationModel.swift; sourceTree = "<group>"; };
+		100000000000000000000004 /* AppPresentationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresentationError.swift; sourceTree = "<group>"; };
 		100000000000000000000005 /* PermissionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionStatus.swift; sourceTree = "<group>"; };
 		100000000000000000000006 /* SystemAccessibilityPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemAccessibilityPermission.swift; sourceTree = "<group>"; };
 		100000000000000000000007 /* SystemAutomationPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemAutomationPermission.swift; sourceTree = "<group>"; };
@@ -58,13 +68,18 @@
 		10000000000000000000000A /* AppleScriptSourceBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptSourceBuilder.swift; sourceTree = "<group>"; };
 		10000000000000000000000B /* PrivateBrowsingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateBrowsingError.swift; sourceTree = "<group>"; };
 		10000000000000000000000C /* SafariPrivateWindowOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariPrivateWindowOpener.swift; sourceTree = "<group>"; };
+		10000000000000000000000D /* PermissionStatusLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionStatusLabel.swift; sourceTree = "<group>"; };
+		10000000000000000000000E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		10000000000000000000000F /* SettingsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindowController.swift; sourceTree = "<group>"; };
 		100000000000000000000010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		100000000000000000000011 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		100000000000000000000012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		100000000000000000000013 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		100000000000000000000014 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		100000000000000000000016 /* NightSafari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NightSafari.entitlements; sourceTree = "<group>"; };
+		100000000000000000000021 /* RecordingOpenURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingOpenURLs.swift; sourceTree = "<group>"; };
 		100000000000000000000022 /* AppleScriptSourceBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptSourceBuilderTests.swift; sourceTree = "<group>"; };
+		100000000000000000000023 /* ApplicationModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationModelTests.swift; sourceTree = "<group>"; };
 		100000000000000000000031 /* SafariWindowAutomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWindowAutomation.swift; sourceTree = "<group>"; };
 		100000000000000000000032 /* SafariWindowSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWindowSnapshot.swift; sourceTree = "<group>"; };
 		100000000000000000000033 /* SafariAccessibilityNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariAccessibilityNode.swift; sourceTree = "<group>"; };
@@ -77,7 +92,6 @@
 		100000000000000000000043 /* TestSafariAccessibilityNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSafariAccessibilityNode.swift; sourceTree = "<group>"; };
 		100000000000000000000044 /* SafariPrivateBrowsingVerifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariPrivateBrowsingVerifierTests.swift; sourceTree = "<group>"; };
 		100000000000000000000045 /* SafariWindowSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWindowSnapshotTests.swift; sourceTree = "<group>"; };
-		100000000000000000000070 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +130,9 @@
 			isa = PBXGroup;
 			children = (
 				100000000000000000000001 /* App.swift */,
-				100000000000000000000070 /* Utilities.swift */,
+				100000000000000000000002 /* AppDelegate.swift */,
+				100000000000000000000003 /* ApplicationModel.swift */,
+				100000000000000000000004 /* AppPresentationError.swift */,
 				100000000000000000000005 /* PermissionStatus.swift */,
 				100000000000000000000006 /* SystemAccessibilityPermission.swift */,
 				100000000000000000000007 /* SystemAutomationPermission.swift */,
@@ -125,6 +141,9 @@
 				10000000000000000000000A /* AppleScriptSourceBuilder.swift */,
 				10000000000000000000000B /* PrivateBrowsingError.swift */,
 				10000000000000000000000C /* SafariPrivateWindowOpener.swift */,
+				10000000000000000000000D /* PermissionStatusLabel.swift */,
+				10000000000000000000000E /* SettingsView.swift */,
+				10000000000000000000000F /* SettingsWindowController.swift */,
 				100000000000000000000013 /* Localizable.xcstrings */,
 				100000000000000000000014 /* InfoPlist.xcstrings */,
 				100000000000000000000016 /* NightSafari.entitlements */,
@@ -150,7 +169,9 @@
 				100000000000000000000043 /* TestSafariAccessibilityNode.swift */,
 				100000000000000000000044 /* SafariPrivateBrowsingVerifierTests.swift */,
 				100000000000000000000045 /* SafariWindowSnapshotTests.swift */,
+				100000000000000000000021 /* RecordingOpenURLs.swift */,
 				100000000000000000000022 /* AppleScriptSourceBuilderTests.swift */,
+				100000000000000000000023 /* ApplicationModelTests.swift */,
 			);
 			path = NightSafariTests;
 			sourceTree = "<group>";
@@ -255,7 +276,9 @@
 			isa = PBXSourcesBuildPhase;
 			files = (
 				200000000000000000000001 /* App.swift in Sources */,
-				200000000000000000000070 /* Utilities.swift in Sources */,
+				200000000000000000000002 /* AppDelegate.swift in Sources */,
+				200000000000000000000003 /* ApplicationModel.swift in Sources */,
+				200000000000000000000004 /* AppPresentationError.swift in Sources */,
 				200000000000000000000005 /* PermissionStatus.swift in Sources */,
 				200000000000000000000006 /* SystemAccessibilityPermission.swift in Sources */,
 				200000000000000000000007 /* SystemAutomationPermission.swift in Sources */,
@@ -264,6 +287,9 @@
 				20000000000000000000000A /* AppleScriptSourceBuilder.swift in Sources */,
 				20000000000000000000000B /* PrivateBrowsingError.swift in Sources */,
 				20000000000000000000000C /* SafariPrivateWindowOpener.swift in Sources */,
+				20000000000000000000000D /* PermissionStatusLabel.swift in Sources */,
+				20000000000000000000000E /* SettingsView.swift in Sources */,
+				20000000000000000000000F /* SettingsWindowController.swift in Sources */,
 				200000000000000000000031 /* SafariWindowAutomation.swift in Sources */,
 				200000000000000000000032 /* SafariWindowSnapshot.swift in Sources */,
 				200000000000000000000033 /* SafariAccessibilityNode.swift in Sources */,
@@ -276,7 +302,9 @@
 		00000000000000000000000D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
+				200000000000000000000021 /* RecordingOpenURLs.swift in Sources */,
 				200000000000000000000022 /* AppleScriptSourceBuilderTests.swift in Sources */,
+				200000000000000000000023 /* ApplicationModelTests.swift in Sources */,
 				200000000000000000000041 /* FakeSafariWindowAutomation.swift in Sources */,
 				200000000000000000000042 /* SafariPrivateWindowOpenerTests.swift in Sources */,
 				200000000000000000000043 /* TestSafariAccessibilityNode.swift in Sources */,

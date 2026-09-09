@@ -1,6 +1,13 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "button.OK" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "OK" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "好" } }
+      }
+    },
     "error.accessibilityDenied" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -91,7 +98,175 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Unknown Safari automation error." } },
         "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "未知的 Safari 自動化錯誤。" } }
       }
+    },
+    "permission.denied" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Not allowed" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "未允許" } }
+      }
+    },
+    "permission.granted" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Allowed" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "已允許" } }
+      }
+    },
+    "permission.notDetermined" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Not requested yet" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "尚未要求" } }
+      }
+    },
+    "settings.accessibility" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Accessibility" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "輔助使用" } }
+      }
+    },
+    "settings.actionsHeader" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Check Setup" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "檢查設定" } }
+      }
+    },
+    "settings.automation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Safari Automation" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "Safari 自動化" } }
+      }
+    },
+    "settings.automationDeniedHelp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Allow NightSafari to control Safari in System Settings, then retry." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "請在「系統設定」中允許 NightSafari 控制 Safari，然後重試。" } }
+      }
+    },
+    "settings.automationGrantedHelp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "NightSafari is allowed to load links into Safari." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "NightSafari 已可將連結載入 Safari。" } }
+      }
+    },
+    "settings.automationNotRequested" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Request access here first. NightSafari appears in Automation settings only after macOS has asked for permission." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "請先在這裡要求權限。macOS 顯示權限提示後，NightSafari 才會出現在「自動化」設定中。" } }
+      }
+    },
+    "settings.explanation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Each group of links opens in a newly created private Safari window. Existing Safari windows and tabs are never closed." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "每組連結都會在新建立的 Safari 私密瀏覽視窗中開啟。現有的 Safari 視窗與分頁不會被關閉。" } }
+      }
+    },
+    "settings.openAccessibility" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open Accessibility Settings" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "開啟輔助使用設定" } }
+      }
+    },
+    "settings.openAutomation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open Automation Settings" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "開啟自動化設定" } }
+      }
+    },
+    "settings.opening" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Opening…" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "正在開啟…" } }
+      }
+    },
+    "settings.permissionsFooter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Accessibility creates and verifies the new private window. Safari Automation access is requested before the window is created." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "輔助使用權限用於建立並確認新的私密視窗。建立視窗前，系統會要求 Safari 自動化權限。" } }
+      }
+    },
+    "settings.permissionsHeader" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Permissions" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "權限" } }
+      }
+    },
+    "settings.privacy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Links are processed only on this Mac. The app does not store them or send them to the developer." } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "連結只會在這台 Mac 上處理。App 不會儲存連結，也不會將連結傳送給開發者。" } }
+      }
+    },
+    "settings.privacyHeader" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Privacy" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "隱私權" } }
+      }
+    },
+    "settings.requestAccessibility" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Request Access" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "要求權限" } }
+      }
+    },
+    "settings.requestAutomation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Request Safari Access" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "要求 Safari 權限" } }
+      }
+    },
+    "settings.requestingAutomation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Waiting for permission…" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "正在等待權限…" } }
+      }
+    },
+    "settings.retry" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Retry" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "重試" } }
+      }
+    },
+    "settings.test" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open Test Page Privately" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "以私密瀏覽開啟測試頁面" } }
+      }
+    },
+    "settings.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open Links in Private Safari Windows" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "在 Safari 私密瀏覽視窗中開啟連結" } }
+      }
+    },
+    "settings.windowTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "NightSafari Settings" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "NightSafari 設定" } }
+      }
     }
   },
-  "version" : "1.1"
+  "version" : "1.0"
 }
