@@ -31,6 +31,7 @@
 		200000000000000000000022 /* AppleScriptSourceBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000022 /* AppleScriptSourceBuilderTests.swift */; };
 		200000000000000000000023 /* ApplicationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000023 /* ApplicationModelTests.swift */; };
 		200000000000000000000031 /* SafariWindowAutomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000031 /* SafariWindowAutomation.swift */; };
+		200000000000000000000038 /* PrivateBrowsingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000038 /* PrivateBrowsingRequest.swift */; };
 		200000000000000000000032 /* SafariWindowSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000032 /* SafariWindowSnapshot.swift */; };
 		200000000000000000000033 /* SafariAccessibilityNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000033 /* SafariAccessibilityNode.swift */; };
 		200000000000000000000034 /* SafariAccessibilityElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000034 /* SafariAccessibilityElement.swift */; };
@@ -42,6 +43,7 @@
 		200000000000000000000043 /* TestSafariAccessibilityNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000043 /* TestSafariAccessibilityNode.swift */; };
 		200000000000000000000044 /* SafariPrivateBrowsingVerifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000044 /* SafariPrivateBrowsingVerifierTests.swift */; };
 		200000000000000000000045 /* SafariWindowSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000045 /* SafariWindowSnapshotTests.swift */; };
+		200000000000000000000046 /* AppDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000046 /* AppDelegateTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,7 @@
 		100000000000000000000022 /* AppleScriptSourceBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptSourceBuilderTests.swift; sourceTree = "<group>"; };
 		100000000000000000000023 /* ApplicationModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationModelTests.swift; sourceTree = "<group>"; };
 		100000000000000000000031 /* SafariWindowAutomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWindowAutomation.swift; sourceTree = "<group>"; };
+		100000000000000000000038 /* PrivateBrowsingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateBrowsingRequest.swift; sourceTree = "<group>"; };
 		100000000000000000000032 /* SafariWindowSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWindowSnapshot.swift; sourceTree = "<group>"; };
 		100000000000000000000033 /* SafariAccessibilityNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariAccessibilityNode.swift; sourceTree = "<group>"; };
 		100000000000000000000034 /* SafariAccessibilityElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariAccessibilityElement.swift; sourceTree = "<group>"; };
@@ -94,6 +97,7 @@
 		100000000000000000000043 /* TestSafariAccessibilityNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSafariAccessibilityNode.swift; sourceTree = "<group>"; };
 		100000000000000000000044 /* SafariPrivateBrowsingVerifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariPrivateBrowsingVerifierTests.swift; sourceTree = "<group>"; };
 		100000000000000000000045 /* SafariWindowSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWindowSnapshotTests.swift; sourceTree = "<group>"; };
+		100000000000000000000046 /* AppDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +155,7 @@
 				100000000000000000000014 /* InfoPlist.xcstrings */,
 				100000000000000000000016 /* NightSafari.entitlements */,
 				100000000000000000000031 /* SafariWindowAutomation.swift */,
+				100000000000000000000038 /* PrivateBrowsingRequest.swift */,
 				100000000000000000000032 /* SafariWindowSnapshot.swift */,
 				100000000000000000000033 /* SafariAccessibilityNode.swift */,
 				100000000000000000000034 /* SafariAccessibilityElement.swift */,
@@ -172,6 +177,7 @@
 				100000000000000000000043 /* TestSafariAccessibilityNode.swift */,
 				100000000000000000000044 /* SafariPrivateBrowsingVerifierTests.swift */,
 				100000000000000000000045 /* SafariWindowSnapshotTests.swift */,
+				100000000000000000000046 /* AppDelegateTests.swift */,
 				100000000000000000000021 /* RecordingOpenURLs.swift */,
 				100000000000000000000022 /* AppleScriptSourceBuilderTests.swift */,
 				100000000000000000000023 /* ApplicationModelTests.swift */,
@@ -295,6 +301,7 @@
 				20000000000000000000000E /* SettingsView.swift in Sources */,
 				20000000000000000000000F /* SettingsWindowController.swift in Sources */,
 				200000000000000000000031 /* SafariWindowAutomation.swift in Sources */,
+				200000000000000000000038 /* PrivateBrowsingRequest.swift in Sources */,
 				200000000000000000000032 /* SafariWindowSnapshot.swift in Sources */,
 				200000000000000000000033 /* SafariAccessibilityNode.swift in Sources */,
 				200000000000000000000034 /* SafariAccessibilityElement.swift in Sources */,
@@ -314,6 +321,7 @@
 				200000000000000000000043 /* TestSafariAccessibilityNode.swift in Sources */,
 				200000000000000000000044 /* SafariPrivateBrowsingVerifierTests.swift in Sources */,
 				200000000000000000000045 /* SafariWindowSnapshotTests.swift in Sources */,
+				200000000000000000000046 /* AppDelegateTests.swift in Sources */,
 			);
 		};
 /* End PBXSourcesBuildPhase section */

@@ -4,6 +4,7 @@ import Foundation
 @MainActor
 final class ApplicationModel: ObservableObject {
 	typealias OpenURLsAction = @MainActor ([URL]) async throws -> Void
+	typealias OpenPrivateWindowAction = @MainActor () async throws -> Void
 	typealias AutomationStatusAction = @MainActor () async -> PermissionStatus?
 	typealias RequestAutomationAction = @MainActor () async throws -> PermissionStatus
 
@@ -36,20 +37,21 @@ final class ApplicationModel: ObservableObject {
 	var onQueueDrained: (() -> Void)?
 
 	private let openURLsAction: OpenURLsAction
+	private let openPrivateWindowAction: OpenPrivateWindowAction
 	private let accessibilityStatus: () -> Bool
 	private let requestAccessibilityAction: () -> Void
 	private let automationStatusAction: AutomationStatusAction
 	private let requestAutomationAction: RequestAutomationAction
-	private var queue: [[URL]] = []
-	private var retryBatch: [URL]?
+	private var queue: [PrivateBrowsingRequest] = []
+	private var retryRequest: PrivateBrowsingRequest?
+	private var isPrivateWindowRequestPending = false
 	private var processingTask: Task<Void, Never>?
 	private var automationRefreshTask: Task<Void, Never>?
 	private var automationRequestTask: Task<Void, Never>?
 
 	init(
-		openURLsAction: @escaping OpenURLsAction = { urls in
-			try await SafariPrivateWindowOpener().open(urls)
-		},
+		openURLsAction: OpenURLsAction? = nil,
+		openPrivateWindowAction: OpenPrivateWindowAction? = nil,
 		accessibilityStatus: @escaping () -> Bool = { SystemAccessibilityPermission.hasAccess },
 		requestAccessibilityAction: @escaping () -> Void = { SystemAccessibilityPermission.requestAccess() },
 		automationStatusAction: @escaping AutomationStatusAction = {
@@ -59,7 +61,9 @@ final class ApplicationModel: ObservableObject {
 			try await SystemAutomationPermission.requestAccess()
 		}
 	) {
-		self.openURLsAction = openURLsAction
+		let opener = SafariPrivateWindowOpener()
+		self.openURLsAction = openURLsAction ?? { try await opener.open($0) }
+		self.openPrivateWindowAction = openPrivateWindowAction ?? { try await opener.activateOrOpenPrivateWindow() }
 		self.accessibilityStatus = accessibilityStatus
 		self.requestAccessibilityAction = requestAccessibilityAction
 		self.automationStatusAction = automationStatusAction
@@ -132,7 +136,19 @@ final class ApplicationModel: ObservableObject {
 		let supportedURLs = urls.filter(\.isSupportedNavigationURL)
 		guard supportedURLs.isEmpty == false else { return }
 
-		queue.append(supportedURLs)
+		queue.append(.openURLs(supportedURLs))
+		startProcessingIfNeeded()
+	}
+
+	func openPrivateWindow() {
+		guard retryRequest == nil else {
+			onFailure?()
+			return
+		}
+		guard isPrivateWindowRequestPending == false else { return }
+
+		isPrivateWindowRequestPending = true
+		queue.append(.activatePrivateWindow)
 		startProcessingIfNeeded()
 	}
 
@@ -142,17 +158,17 @@ final class ApplicationModel: ObservableObject {
 	}
 
 	func retry() {
-		guard canRetryNow, let retryBatch else { return }
+		guard canRetryNow, let retryRequest else { return }
 
-		self.retryBatch = nil
+		self.retryRequest = nil
 		canRetry = false
 		presentedError = nil
-		queue.insert(retryBatch, at: 0)
+		queue.insert(retryRequest, at: 0)
 		startProcessingIfNeeded()
 	}
 
 	private func startProcessingIfNeeded() {
-		guard processingTask == nil, retryBatch == nil else { return }
+		guard processingTask == nil, retryRequest == nil else { return }
 
 		isProcessing = true
 		processingTask = Task { [weak self] in
@@ -162,28 +178,34 @@ final class ApplicationModel: ObservableObject {
 
 	private func drainQueue() async {
 		while Task.isCancelled == false, queue.isEmpty == false {
-			let urls = queue.removeFirst()
+			let request = queue.removeFirst()
 
 			do {
-				try await openURLsAction(urls)
+				switch request {
+				case .openURLs(let urls):
+					try await openURLsAction(urls)
+				case .activatePrivateWindow:
+					try await openPrivateWindowAction()
+					isPrivateWindowRequestPending = false
+				}
 				automationStatus = .granted
-				retryBatch = nil
+				retryRequest = nil
 				canRetry = false
 			} catch is CancellationError {
-				queue.insert(urls, at: 0)
+				queue.insert(request, at: 0)
 				break
 			} catch let error as PrivateBrowsingError {
 				if error.isAutomationDenied {
 					automationStatus = .denied
 				}
 
-				retryBatch = urls
+				retryRequest = request
 				canRetry = true
 				presentedError = AppPresentationError(error)
 				onFailure?()
 				break
 			} catch {
-				retryBatch = urls
+				retryRequest = request
 				canRetry = true
 				presentedError = AppPresentationError(error)
 				onFailure?()

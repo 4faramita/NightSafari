@@ -8,6 +8,13 @@
         "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "好" } }
       }
     },
+    "menu.settings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Settings…" } },
+        "zh-Hant" : { "stringUnit" : { "state" : "translated", "value" : "設定…" } }
+      }
+    },
     "error.accessibilityDenied" : {
       "extractionState" : "manual",
       "localizations" : {

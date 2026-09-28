@@ -9,5 +9,6 @@ protocol SafariWindowAutomation {
 	func snapshot() throws -> SafariWindowSnapshot<Window>?
 	func createPrivateWindow() throws
 	func isPrivateWindow(_ window: Window) -> Bool
+	func activate(_ window: Window) throws
 	func open(_ urls: [URL], inWindowID windowID: Int) throws
 }

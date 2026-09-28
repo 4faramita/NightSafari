@@ -1,11 +1,20 @@
 import Foundation
 
 @MainActor
-struct SafariPrivateWindowOpener<Automation: SafariWindowAutomation> {
+final class SafariPrivateWindowOpener<Automation: SafariWindowAutomation> {
 	let automation: Automation
-	var pollInterval: Duration = .milliseconds(100)
-	var maximumPollAttempts = 100
-	var requiredStableSnapshotCount = 10
+	let pollInterval: Duration
+	let maximumPollAttempts: Int
+	let requiredStableSnapshotCount: Int
+	private var recentWindow: (window: Automation.Window, scriptID: Int)?
+
+	init(automation: Automation, pollInterval: Duration = .milliseconds(100),
+		maximumPollAttempts: Int = 100, requiredStableSnapshotCount: Int = 10) {
+		self.automation = automation
+		self.pollInterval = pollInterval
+		self.maximumPollAttempts = maximumPollAttempts
+		self.requiredStableSnapshotCount = requiredStableSnapshotCount
+	}
 
 	func open(_ urls: [URL]) async throws {
 		guard urls.isEmpty == false else { return }
@@ -14,9 +23,33 @@ struct SafariPrivateWindowOpener<Automation: SafariWindowAutomation> {
 		try Task.checkCancellation()
 		let existingWindows = try await stableWindowSnapshot()
 		try automation.createPrivateWindow()
-		let windowID = try await verifiedNewWindowID(excluding: existingWindows)
+		let target = try await verifiedNewWindow(excluding: existingWindows)
 		try Task.checkCancellation()
-		try automation.open(urls, inWindowID: windowID)
+		try automation.open(urls, inWindowID: target.scriptID)
+		recentWindow = target
+	}
+
+	func activateOrOpenPrivateWindow() async throws {
+		try await automation.prepare()
+		try Task.checkCancellation()
+
+		// Reuse only a window whose identity and private chrome we verified in this session.
+		if let recentWindow,
+			let existingWindows = try automation.snapshot(),
+			existingWindows.windows.contains(recentWindow.window),
+			existingWindows.scriptIDs.contains(recentWindow.scriptID),
+			automation.isPrivateWindow(recentWindow.window) {
+			try automation.activate(recentWindow.window)
+			return
+		}
+
+		recentWindow = nil
+		let existingWindows = try await stableWindowSnapshot()
+		try automation.createPrivateWindow()
+		let target = try await verifiedNewWindow(excluding: existingWindows)
+		try Task.checkCancellation()
+		try automation.activate(target.window)
+		recentWindow = target
 	}
 
 	private func stableWindowSnapshot() async throws -> SafariWindowSnapshot<Automation.Window> {
@@ -41,9 +74,9 @@ struct SafariPrivateWindowOpener<Automation: SafariWindowAutomation> {
 		throw PrivateBrowsingError.safariNotReady
 	}
 
-	private func verifiedNewWindowID(
+	private func verifiedNewWindow(
 		excluding previous: SafariWindowSnapshot<Automation.Window>
-	) async throws -> Int {
+	) async throws -> (window: Automation.Window, scriptID: Int) {
 		for _ in 0..<maximumPollAttempts {
 			try Task.checkCancellation()
 			if let current = try automation.snapshot(),
@@ -52,7 +85,7 @@ struct SafariPrivateWindowOpener<Automation: SafariWindowAutomation> {
 				let confirmed = try automation.snapshot(),
 				confirmed == current,
 				automation.isPrivateWindow(target.window) {
-				return target.scriptID
+				return target
 			}
 			try await Task.sleep(for: pollInterval)
 		}
@@ -62,7 +95,7 @@ struct SafariPrivateWindowOpener<Automation: SafariWindowAutomation> {
 }
 
 extension SafariPrivateWindowOpener where Automation == SystemSafariAutomation {
-	init() {
+	convenience init() {
 		self.init(automation: SystemSafariAutomation())
 	}
 }

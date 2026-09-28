@@ -197,6 +197,66 @@ struct ApplicationModelTests {
 		#expect(recorder.batches == [[first], [first], [first], [second]])
 	}
 
+	@Test
+	func dockRequestsAndIncomingURLsUseTheSameSerialQueue() async throws {
+		let recorder = RecordingOpenURLs()
+		let model = makeModel(recorder: recorder)
+		let url = try #require(URL(string: "https://example.com"))
+		model.openPrivateWindow()
+		model.enqueue([url])
+		await waitUntilQueueDrains(model)
+		#expect(recorder.requests == [.activatePrivateWindow, .openURLs([url])])
+		#expect(recorder.maximumConcurrentCalls == 1)
+	}
+
+	@Test
+	func repeatedDockClicksAreCoalescedWhileAnOpenIsPending() async {
+		let recorder = RecordingOpenURLs()
+		let model = makeModel(recorder: recorder)
+		model.openPrivateWindow()
+		model.openPrivateWindow()
+		await waitUntilQueueDrains(model)
+		#expect(recorder.requests == [.activatePrivateWindow])
+		model.openPrivateWindow()
+		await waitUntilQueueDrains(model)
+		#expect(recorder.requests == [.activatePrivateWindow, .activatePrivateWindow])
+	}
+
+	@Test
+	func failedDockRequestIsRetriedBeforeLaterURLs() async throws {
+		let recorder = RecordingOpenURLs()
+		recorder.failuresRemaining = 1
+		let model = makeModel(recorder: recorder)
+		let url = try #require(URL(string: "https://example.com"))
+		model.openPrivateWindow()
+		model.enqueue([url])
+		await waitUntilQueueDrains(model)
+		#expect(model.canRetry)
+		#expect(model.presentedError != nil)
+		model.retry()
+		await waitUntilQueueDrains(model)
+		#expect(recorder.requests == [.activatePrivateWindow, .activatePrivateWindow, .openURLs([url])])
+		#expect(model.canRetry == false)
+	}
+
+	@Test
+	func dockClickRevealsSettingsWithoutDiscardingFailedURLs() async throws {
+		let recorder = RecordingOpenURLs()
+		recorder.failuresRemaining = 1
+		let model = makeModel(recorder: recorder)
+		let url = try #require(URL(string: "https://example.com"))
+		model.enqueue([url])
+		await waitUntilQueueDrains(model)
+		var settingsRequests = 0
+		model.onFailure = { settingsRequests += 1 }
+		model.openPrivateWindow()
+		#expect(settingsRequests == 1)
+		#expect(recorder.requests == [.openURLs([url])])
+		model.retry()
+		await waitUntilQueueDrains(model)
+		#expect(recorder.requests == [.openURLs([url]), .openURLs([url])])
+	}
+
 	private func makeModel(
 		recorder: RecordingOpenURLs,
 		accessibilityGranted: Bool = true,
@@ -205,6 +265,7 @@ struct ApplicationModelTests {
 	) -> ApplicationModel {
 		ApplicationModel(
 			openURLsAction: recorder.open,
+			openPrivateWindowAction: recorder.openPrivateWindow,
 			accessibilityStatus: { accessibilityGranted },
 			requestAccessibilityAction: {},
 			automationStatusAction: automationStatusAction,

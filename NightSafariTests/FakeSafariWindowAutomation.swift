@@ -3,16 +3,18 @@ import Foundation
 
 @MainActor
 final class FakeSafariWindowAutomation: SafariWindowAutomation {
-	let initial = SafariWindowSnapshot(windows: [1], scriptIDs: Set([101]))
+	var initial = SafariWindowSnapshot(windows: [1], scriptIDs: Set([101]))
 	var createdSnapshots: [SafariWindowSnapshot<Int>?] = [
 		SafariWindowSnapshot(windows: [1, 2], scriptIDs: Set([101, 202]))
 	]
 	var privateWindows: Set<Int> = [2]
 	var prepareError: (any Error)?
+	var activationError: (any Error)?
 	var privateChecksBeforeReady = 0
 	private(set) var operations: [String] = []
 	private(set) var openedWindowIDs: [Int] = []
 	private(set) var openedURLs: [[URL]] = []
+	private(set) var activatedWindows: [Int] = []
 	private var hasCreatedWindow = false
 	private var snapshotIndex = 0
 
@@ -48,5 +50,17 @@ final class FakeSafariWindowAutomation: SafariWindowAutomation {
 		operations.append("open")
 		openedWindowIDs.append(windowID)
 		openedURLs.append(urls)
+	}
+
+	func activate(_ window: Int) throws {
+		operations.append("activate")
+		if let activationError { throw activationError }
+		activatedWindows.append(window)
+	}
+
+	func setExistingWindows(_ snapshot: SafariWindowSnapshot<Int>) {
+		initial = snapshot
+		hasCreatedWindow = false
+		snapshotIndex = 0
 	}
 }

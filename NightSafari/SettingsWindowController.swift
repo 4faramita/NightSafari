@@ -28,10 +28,6 @@ final class SettingsWindowController: NSWindowController {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	var isVisible: Bool {
-		window?.isVisible == true
-	}
-
 	func show() {
 		model.refreshPermissions()
 		showWindow(nil)

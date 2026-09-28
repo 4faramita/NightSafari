@@ -79,6 +79,20 @@ final class SystemSafariAutomation: @MainActor SafariWindowAutomation {
 		_ = safari?.activate(options: [])
 	}
 
+	func activate(_ window: SafariAccessibilityElement) throws {
+		guard isPrivateWindow(window) else { throw PrivateBrowsingError.privateWindowUnverified }
+		if window.value(kAXMinimizedAttribute) as? Bool == true {
+			guard AXUIElementSetAttributeValue(window.element, kAXMinimizedAttribute as CFString,
+				kCFBooleanFalse) == .success else {
+				throw PrivateBrowsingError.safariActivationFailed
+			}
+		}
+		guard AXUIElementPerformAction(window.element, kAXRaiseAction as CFString) == .success,
+			safari?.activate(options: []) == true else {
+			throw PrivateBrowsingError.safariActivationFailed
+		}
+	}
+
 	private func windowIDs() throws -> Set<Int> {
 		do {
 			let descriptor = try SystemAppleScriptRunner.run(AppleScriptSourceBuilder.windowIDs)

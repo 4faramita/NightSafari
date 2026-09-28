@@ -2,7 +2,7 @@
 
 > Open links in a newly created private Safari window
 
-NightSafari is a lightweight URL handler for browser picker apps. Each group of links is opened in a new private Safari window, then NightSafari quits. It never closes existing Safari windows or tabs.
+NightSafari is a lightweight URL handler for browser picker apps and a Dock launcher for private Safari windows. Each group of links is opened in a new private Safari window. It never closes existing Safari windows or tabs.
 
 The main use case is opening a link privately from a browser picker app such as [Velja](https://sindresorhus.com/velja).
 
@@ -21,6 +21,10 @@ If a permission was denied, NightSafari provides buttons that open the correspon
 ## Usage
 
 Open an HTTP or HTTPS URL with NightSafari as you would with a regular browser. For example, enable NightSafari in Velja and select it from the browser prompt.
+
+Keep NightSafari in the Dock and click its icon to open a private Safari window. While NightSafari stays running, later clicks bring forward the most recent private window it opened, restoring it if minimized. If that window was closed or can no longer be verified as private, NightSafari creates a new private window. Windows opened manually in Safari are left alone, and the remembered window is cleared when NightSafari quits.
+
+Right-click NightSafari’s Dock icon and choose “Settings…” to open its settings window. When NightSafari is the frontmost app, its app menu and Command-Comma open the same window; Command-Comma is not a global shortcut. NightSafari stays running after opening links or closing settings; use Quit or Command-Q to exit. Missing permissions and failed requests also reveal settings, where the request can be retried.
 
 Keep Safari’s toolbar visible so NightSafari can verify its private address field. If Safari’s interface cannot be verified, or more than one window appears during setup, NightSafari leaves the links unopened and offers Retry. New incoming links wait behind a failed batch until it is retried.
 

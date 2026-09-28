@@ -8,5 +8,13 @@ struct AppMain: App {
 		Settings {
 			SettingsView(model: appDelegate.model)
 		}
+		.commands {
+			CommandGroup(replacing: .appSettings) {
+				Button(.menuSettings) {
+					appDelegate.showSettings()
+				}
+				.keyboardShortcut(",", modifiers: .command)
+			}
+		}
 	}
 }
